@@ -1,15 +1,34 @@
 import ReactDOM from "react-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import * as esbuild from "esbuild-wasm";
 
 const App = () => {
+  const ref = useRef<any>();
   const [input, setInput] = useState("");
   const [code, setCode] = useState("");
 
+  const startService = async () => {
+    ref.current = await esbuild.startService({
+      worker: true,
+      wasmURL: "/esbuild.wasm",
+    });
+  };
+
   useEffect(() => {
-    if (input !== "") {
-      setCode(input.toUpperCase());
+    startService();
+  }, []);
+
+  const onClick = async () => {
+    try {
+      const { code } = await ref.current.transform(input, {
+        loader: "jsx",
+        target: "es2015",
+      });
+      setCode(code);
+    } catch (e) {
+      console.log(e);
     }
-  }, [input]);
+  };
   return (
     <div>
       <textarea
@@ -17,7 +36,7 @@ const App = () => {
         onChange={(e) => setInput(e.target.value)}
       ></textarea>
       <div>
-        <button>Submit</button>
+        <button onClick={onClick}>Submit</button>
       </div>
       <pre>{code}</pre>
     </div>
