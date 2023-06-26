@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import { useState, useEffect, useRef } from "react";
 import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
+import { fetchPlugin } from "./plugins/fetch-plugin";
 
 const App = () => {
   const ref = useRef<any>();
@@ -20,20 +21,11 @@ const App = () => {
   }, []);
 
   const onClick = async () => {
-    // try {
-    //   const { code } = await ref.current.transform(input, {
-    //     loader: "jsx",
-    //     target: "es2015",
-    //   });
-    //   setCode(code);
-    // } catch (e) {
-    //   console.log(e);
-    // }
     const result = await ref.current.build({
       entryPoints: ["index.js"],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin(input)],
+      plugins: [unpkgPathPlugin(), fetchPlugin(input)],
       define: {
         "process.env.NODE_ENV": '"production"',
         global: '"window"',
