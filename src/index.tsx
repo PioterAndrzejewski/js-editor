@@ -5,6 +5,8 @@ import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { fetchPlugin } from "./plugins/fetch-plugin";
 
+import "bulmaswatch/slate/bulmaswatch.min.css";
+
 import CodeEditor from "./components/CodeEditor";
 
 const App = () => {
