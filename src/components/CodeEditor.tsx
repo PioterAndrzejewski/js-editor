@@ -13,18 +13,6 @@ interface CodeEditorProps {
   onChange(val: string): void;
 }
 
-const defaultValue = `import React from 'react';
-import { createRoot } from 'react-dom/client';
-
-const App = () => <h1>Hello world!</h1>;
-
-const root = createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);`;
-
 const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
   const monacoRef: any = useRef();
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
@@ -69,7 +57,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
       </button>
       <MonacoEditor
         editorDidMount={onEditorDidMount}
-        value={initialValue || defaultValue}
+        value={initialValue}
         height='500px'
         language='javascript'
         theme='dark'

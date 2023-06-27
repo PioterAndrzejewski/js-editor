@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import "./preview.css";
 
 interface PreviewProps {
   code: string;
@@ -30,14 +31,13 @@ const html = `
 const Preview: React.FC<PreviewProps> = ({ code }) => {
   const iFrame = useRef<any>();
   useEffect(() => {
-    iFrame.current.srcdoc = html;
     iFrame.current.contentWindow.postMessage(code, "*");
   }, [code]);
   return (
     <iframe
       ref={iFrame}
       srcDoc={html}
-      title='screen'
+      title='preview-window'
       sandbox='allow-scripts allow-modals'
     />
   );
