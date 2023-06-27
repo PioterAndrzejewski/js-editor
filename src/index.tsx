@@ -1,5 +1,4 @@
-import { createRoot } from "react-dom/client";
-import React from "react";
+import ReactDOM from "react-dom";
 import { useState, useEffect, useRef } from "react";
 import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
@@ -78,9 +77,4 @@ const App = () => {
   );
 };
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+ReactDOM.render(<App />, document.querySelector("#root"));
