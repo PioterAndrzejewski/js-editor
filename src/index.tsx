@@ -1,4 +1,5 @@
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
@@ -6,8 +7,8 @@ import { fetchPlugin } from "./plugins/fetch-plugin";
 
 const App = () => {
   const ref = useRef<any>();
+  const iFrame = useRef<any>();
   const [input, setInput] = useState("");
-  const [code, setCode] = useState("");
 
   const startService = async () => {
     ref.current = await esbuild.startService({
@@ -21,6 +22,7 @@ const App = () => {
   }, []);
 
   const onClick = async () => {
+    iFrame.current.srcdoc = html;
     const result = await ref.current.build({
       entryPoints: ["index.js"],
       bundle: true,
@@ -31,8 +33,31 @@ const App = () => {
         global: '"window"',
       },
     });
-    setCode(result.outputFiles[0].text);
+    iFrame.current.contentWindow.postMessage(result.outputFiles[0].text, "*");
   };
+
+  const html = `
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.addEventListener('message', event => {
+        try {
+          eval(event.data);
+        } catch (e) {
+          document.querySelector('#root').innerHTML = '<div style="color: red;"><h2>Runtime error</h2>' + e + '</div>';
+          console.error(e)
+        }
+      }, false)
+    </script>
+  </body>
+  </html>
+  `;
   return (
     <div>
       <textarea
@@ -42,9 +67,19 @@ const App = () => {
       <div>
         <button onClick={onClick}>Submit</button>
       </div>
-      <pre>{code}</pre>
+      <iframe
+        ref={iFrame}
+        srcDoc={html}
+        title='screen'
+        sandbox='allow-scripts allow-modals'
+      />
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+const root = createRoot(document.getElementById("root") as HTMLElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
