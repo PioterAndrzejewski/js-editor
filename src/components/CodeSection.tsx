@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import bundle from "../bundler";
 import Preview from "./Preview";
 import CodeEditor from "./CodeEditor";
@@ -23,21 +23,24 @@ console.log('happens');
 const CodeSection = () => {
   const [code, setCode] = useState("");
   const [input, setInput] = useState(initValue);
+  const timer = useRef();
 
-  const onClick = async () => {
-    const bundledCode = await bundle(input);
-    setCode(bundledCode);
-  };
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      const bundledCode = await bundle(input);
+      setCode(bundledCode);
+    }, 750);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [input]);
 
   return (
     <Resizable direction='vertical'>
       <div className='code-section-wrapper'>
         <Resizable direction='horizontal'>
-          <CodeEditor
-            initialValue={input}
-            onChange={(val) => setInput(val)}
-            execute={onClick}
-          />
+          <CodeEditor initialValue={input} onChange={(val) => setInput(val)} />
         </Resizable>
         <Preview code={code} />
       </div>

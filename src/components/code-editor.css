@@ -11,14 +11,7 @@
   right: 20px;
   opacity: 0;
   z-index: 5;
-}
-
-.editor-wrapper .button-format {
   top: 15px;
-}
-
-.editor-wrapper .button-execute {
-  top: 65px;
 }
 
 .editor-wrapper:hover button {

@@ -11,14 +11,9 @@ import "./syntax.css";
 interface CodeEditorProps {
   initialValue: string | null;
   onChange(val: string): void;
-  execute: () => void;
 }
 
-const CodeEditor: React.FC<CodeEditorProps> = ({
-  initialValue,
-  execute,
-  onChange,
-}) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
   const monacoRef: any = useRef();
   const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
     monacoRef.current = monacoEditor;
@@ -59,12 +54,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         className='button button-format is-primary is-small'
       >
         Format code
-      </button>
-      <button
-        onClick={execute}
-        className='button button-execute is-primary is-small'
-      >
-        Execute code
       </button>
       <MonacoEditor
         editorDidMount={onEditorDidMount}
