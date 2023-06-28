@@ -2,7 +2,9 @@ import { useState } from "react";
 import bundle from "../bundler";
 import Preview from "./Preview";
 import CodeEditor from "./CodeEditor";
+import Resizable from "./Resizable";
 import "bulmaswatch/slate/bulmaswatch.min.css";
+import "./code-section.css";
 
 const initValue = `import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -28,13 +30,14 @@ const CodeSection = () => {
   };
 
   return (
-    <div>
-      <CodeEditor initialValue={input} onChange={(val) => setInput(val)} />
-      <div>
-        <button onClick={onClick}>Submit</button>
+    <Resizable direction='vertical'>
+      <div className='code-section-wrapper'>
+        <Resizable direction='horizontal'>
+          <CodeEditor initialValue={input} onChange={(val) => setInput(val)} />
+        </Resizable>
+        <Preview code={code} />
       </div>
-      <Preview code={code} />
-    </div>
+    </Resizable>
   );
 };
 

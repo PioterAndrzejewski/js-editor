@@ -34,12 +34,14 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
     iFrame.current.contentWindow.postMessage(code, "*");
   }, [code]);
   return (
-    <iframe
-      ref={iFrame}
-      srcDoc={html}
-      title='preview-window'
-      sandbox='allow-scripts allow-modals'
-    />
+    <div className='preview-wrapper'>
+      <iframe
+        ref={iFrame}
+        srcDoc={html}
+        title='preview-window'
+        sandbox='allow-scripts allow-modals'
+      />
+    </div>
   );
 };
 

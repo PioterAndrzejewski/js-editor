@@ -1,7 +1,8 @@
 .editor-wrapper {
   position: relative;
-  padding: 15px;
   height: 100%;
+  width: calc(100% - 10px);
+  flex-grow: 0;
 }
 
 .editor-wrapper .button-format {
