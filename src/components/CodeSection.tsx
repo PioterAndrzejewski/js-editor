@@ -33,7 +33,11 @@ const CodeSection = () => {
     <Resizable direction='vertical'>
       <div className='code-section-wrapper'>
         <Resizable direction='horizontal'>
-          <CodeEditor initialValue={input} onChange={(val) => setInput(val)} />
+          <CodeEditor
+            initialValue={input}
+            onChange={(val) => setInput(val)}
+            execute={onClick}
+          />
         </Resizable>
         <Preview code={code} />
       </div>

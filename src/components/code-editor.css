@@ -5,14 +5,22 @@
   flex-grow: 0;
 }
 
-.editor-wrapper .button-format {
+.editor-wrapper button {
   position: absolute;
-  z-index: 5;
-  right: 15px;
-  top: 15px;
+  width: 100px;
+  right: 20px;
   opacity: 0;
+  z-index: 5;
 }
 
-.editor-wrapper:hover .button-format {
+.editor-wrapper .button-format {
+  top: 15px;
+}
+
+.editor-wrapper .button-execute {
+  top: 65px;
+}
+
+.editor-wrapper:hover button {
   opacity: 1;
 }
