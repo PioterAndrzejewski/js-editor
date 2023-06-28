@@ -7,8 +7,8 @@ import "./index.css";
 const App = () => {
   return (
     <div>
-      {/* <CodeSection /> */}
       <Editor />
+      <CodeSection />
     </div>
   );
 };
