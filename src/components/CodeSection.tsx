@@ -22,13 +22,14 @@ console.log('happens');
 
 const CodeSection = () => {
   const [code, setCode] = useState("");
+  const [err, setErr] = useState("");
   const [input, setInput] = useState(initValue);
-  const timer = useRef();
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       const bundledCode = await bundle(input);
-      setCode(bundledCode);
+      setCode(bundledCode.code);
+      setErr(bundledCode.err);
     }, 750);
 
     return () => {
@@ -42,7 +43,7 @@ const CodeSection = () => {
         <Resizable direction='horizontal'>
           <CodeEditor initialValue={input} onChange={(val) => setInput(val)} />
         </Resizable>
-        <Preview code={code} />
+        <Preview code={code} error={err} />
       </div>
     </Resizable>
   );

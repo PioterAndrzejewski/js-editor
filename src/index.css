@@ -1,0 +1,4 @@
+/* solution for create-react-app bug, which creates iframe overlay in certain situations and does not remove it  */
+body > iframe[style*="z-index: 2147483647"] {
+  display: none;
+}

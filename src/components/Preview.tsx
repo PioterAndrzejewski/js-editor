@@ -3,6 +3,7 @@ import "./preview.css";
 
 interface PreviewProps {
   code: string;
+  error: string;
 }
 
 const html = `
@@ -15,12 +16,20 @@ const html = `
 <body>
   <div id="root"></div>
   <script>
+    const handleError = (err) => {
+      const root = document.querySelector('#root');
+      root.innerHTML = '<div style="color: red;"><h2>Runtime error</h2>' + err + '</div>';
+      console.error(err)
+    };
+    window.addEventListener('error', event => {
+      event.preventDefault();
+      handleError(event.message);
+    }, false)
     window.addEventListener('message', event => {
       try {
         eval(event.data);
-      } catch (e) {
-        document.querySelector('#root').innerHTML = '<div style="color: red;"><h2>Runtime error</h2>' + e + '</div>';
-        console.error(e)
+      } catch (err) {
+        handleError(err);
       }
     }, false)
   </script>
@@ -28,7 +37,7 @@ const html = `
 </html>
 `;
 
-const Preview: React.FC<PreviewProps> = ({ code }) => {
+const Preview: React.FC<PreviewProps> = ({ code, error }) => {
   const iFrame = useRef<any>();
   useEffect(() => {
     iFrame.current.srcdoc = html;
@@ -44,6 +53,13 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
         title='preview-window'
         sandbox='allow-scripts allow-modals'
       />
+      {error && (
+        <div className='preview-error'>
+          <h1>Bundling error</h1>
+
+          <p>{error.replace("index.js", "users code")}</p>
+        </div>
+      )}
     </div>
   );
 };
