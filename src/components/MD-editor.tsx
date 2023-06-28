@@ -34,7 +34,9 @@ const Editor: React.FC = () => {
       {editMode && (
         <MDEditor
           value={markdown}
-          onChange={(newValue) => setMarkdown(newValue)}
+          onChange={(newValue) =>
+            setMarkdown(newValue as React.SetStateAction<string>)
+          }
         />
       )}
       {!editMode && <MDEditor.Markdown source={markdown} />}
