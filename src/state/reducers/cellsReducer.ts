@@ -21,9 +21,22 @@ const initialState: CellsState = {
 const reducer = (state: CellsState, action: Action): CellsState => {
   switch (action.type) {
     case ActionType.UPDATE_CELL:
-      return state;
+      const { id, content } = action.payload;
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [id]: {
+            ...state.data[id],
+            content,
+          },
+        },
+      };
     case ActionType.DELETE_CELL:
-      return state;
+      return {
+        ...state,
+        // data: state.data.filter((obj: Cell) => obj.id !== action.payload),
+      };
     case ActionType.MOVE_CELL:
       return state;
     case ActionType.INSERT_CELL_BEFORE:
