@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import bundle from "../bundler";
 import Preview from "./Preview";
 import CodeEditor from "./CodeEditor";
