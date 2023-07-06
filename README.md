@@ -39,6 +39,8 @@ The app consists of several elements:
 - [ ] MD-editor for documenting code
 
 ![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/42718f58-64f9-441c-9558-f4c77273ab00)
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/0c7b0737-db09-40a5-ba1a-c0ab0d443124)
+
 
 
 - [ ] Code editor - for writing javascript code
