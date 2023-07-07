@@ -2,9 +2,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { store } from "./state";
 import CellList from "./components/CellList";
-import CodeSection from "./components/CodeSection";
-import Editor from "./components/TextEditor";
 import "bulmaswatch/slate/bulmaswatch.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 
 const App = () => {
@@ -12,8 +11,6 @@ const App = () => {
     <Provider store={store}>
       <div>
         <CellList />
-        {/* <Editor />
-        <CodeSection /> */}
       </div>
     </Provider>
   );
