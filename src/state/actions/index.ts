@@ -1,5 +1,14 @@
 import { ActionType } from "../action-types";
-import { CellTypes } from "../cell";
+import { CellTypes, Cell } from "../cell";
+
+interface CellsState {
+  loading: boolean;
+  error: string | null;
+  order: string[];
+  data: {
+    [key: string]: Cell;
+  };
+}
 
 export type Direction = "up" | "down";
 
@@ -32,6 +41,15 @@ export interface UpdateCellAction {
   };
 }
 
+export interface LoadCellsAction {
+  type: ActionType.LOAD_CELLS;
+  payload: CellsState;
+}
+
+export interface SaveCellsToLSAction {
+  type: ActionType.SAVE_TO_LS;
+}
+
 export interface BundleStartAction {
   type: ActionType.BUNDLE_START;
   payload: {
@@ -56,4 +74,6 @@ export type Action =
   | InsertCellAfterAction
   | UpdateCellAction
   | BundleStartAction
-  | BundleCompleteAction;
+  | BundleCompleteAction
+  | LoadCellsAction
+  | SaveCellsToLSAction;

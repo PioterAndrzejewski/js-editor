@@ -5,11 +5,22 @@ import {
   DeleteCellAction,
   MoveCellAction,
   InsertCellAfterAction,
+  LoadCellsAction,
+  SaveCellsToLSAction,
   Direction,
   Action,
 } from "../actions";
-import { CellTypes } from "../cell";
+import { CellTypes, Cell } from "../cell";
 import bundle from "../../bundler";
+
+interface CellsState {
+  loading: boolean;
+  error: string | null;
+  order: string[];
+  data: {
+    [key: string]: Cell;
+  };
+}
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -48,6 +59,19 @@ export const insertCellAfter = (
       id,
       type,
     },
+  };
+};
+
+export const saveCellsToLS = (): SaveCellsToLSAction => {
+  return {
+    type: ActionType.SAVE_TO_LS,
+  };
+};
+
+export const loadCells = (loadedState: CellsState): LoadCellsAction => {
+  return {
+    type: ActionType.LOAD_CELLS,
+    payload: loadedState,
   };
 };
 

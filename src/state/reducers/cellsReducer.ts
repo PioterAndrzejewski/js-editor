@@ -3,8 +3,9 @@ import { ActionType } from "../action-types";
 import { Action } from "../actions";
 import { Cell } from "../cell";
 import { initialJS } from "../initialJS";
+import { saveToLS } from "../local-storage";
 
-interface CellsState {
+export interface CellsState {
   loading: boolean;
   error: string | null;
   order: string[];
@@ -37,12 +38,14 @@ const reducer = produce(
       case ActionType.UPDATE_CELL:
         const { id, content } = action.payload;
         state.data[id].content = content;
+        saveToLS(state);
         return state;
       case ActionType.DELETE_CELL:
         const idToDelete = action.payload;
         delete state.data[idToDelete];
         const index = state.order.findIndex((cell) => cell === idToDelete);
         if (index !== -1) state.order.splice(index, 1);
+        saveToLS(state);
         return state;
       case ActionType.MOVE_CELL:
         const { direction } = action.payload;
@@ -51,10 +54,12 @@ const reducer = produce(
         );
         const targetIndex = direction === "up" ? oldIndex - 1 : oldIndex + 1;
         if (targetIndex === -1 || targetIndex > state.order.length - 1) {
+          saveToLS(state);
           return state;
         }
         state.order[oldIndex] = state.order[targetIndex];
         state.order[targetIndex] = action.payload.id;
+        saveToLS(state);
         return state;
       case ActionType.INSERT_CELL_AFTER:
         const cell: Cell = {
@@ -68,9 +73,11 @@ const reducer = produce(
         );
         if (foundIndex < 0) {
           state.order.unshift(cell.id);
+          saveToLS(state);
           return state;
         }
         state.order.splice(foundIndex + 1, 0, cell.id);
+        saveToLS(state);
         return state;
       default:
         return state;
