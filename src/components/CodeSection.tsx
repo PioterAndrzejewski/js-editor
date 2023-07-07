@@ -6,48 +6,25 @@ import { Cell } from "../state";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import "./code-section.css";
+import { useCumulativeCode } from "../hooks/use-cumulative-code";
 
 interface CodeSectionProps {
   cell: Cell;
 }
 
-const initShowFunction = `
-  const show = (toShow) => {
-    if (typeof toShow === 'object') {
-      document.querySelector('#root').innerHTML = JSON.stringify(toShow);
-      return;
-    };
-    document.querySelector('#root').innerHTML = toShow;
-  }
-`;
-
 const CodeSection: React.FC<CodeSectionProps> = ({ cell }) => {
   const { updateCell, createBundle } = useActions();
   const bundle = useTypedSelector((state) => state.bundles[cell.id]);
-  const cumulativeCode = useTypedSelector((state) => {
-    const { data, order } = state.cells;
-    const orderedCells = order.map((id) => data[id]);
-    const cumulativeCode = [initShowFunction];
-    for (const currentCell of orderedCells) {
-      if (currentCell.type === "code") {
-        cumulativeCode.push(currentCell.content);
-      }
-      if (currentCell.id === cell.id) {
-        break;
-      }
-    }
-    return cumulativeCode;
-  });
-  console.log(cumulativeCode);
+  const cumulativeCode = useCumulativeCode(cell.id);
 
   useEffect(() => {
     if (!bundle && cumulativeCode) {
-      createBundle(cell.id, cumulativeCode.join("\n"));
+      createBundle(cell.id, cumulativeCode);
       return;
     }
     const timer = setTimeout(async () => {
       if (cumulativeCode) {
-        createBundle(cell.id, cumulativeCode.join("\n"));
+        createBundle(cell.id, cumulativeCode);
       }
     }, 750);
 
@@ -55,7 +32,7 @@ const CodeSection: React.FC<CodeSectionProps> = ({ cell }) => {
       clearTimeout(timer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cumulativeCode?.join("\n"), cell.id, createBundle]);
+  }, [cumulativeCode, cell.id, createBundle]);
 
   return (
     <Resizable direction='vertical'>
