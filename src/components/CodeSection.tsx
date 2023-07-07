@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import bundle from "../bundler";
+import { useEffect } from "react";
 import Preview from "./Preview";
 import CodeEditor from "./CodeEditor";
 import Resizable from "./Resizable";
 import { Cell } from "../state";
 import { useActions } from "../hooks/useActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import "./code-section.css";
 
 interface CodeSectionProps {
@@ -12,21 +12,23 @@ interface CodeSectionProps {
 }
 
 const CodeSection: React.FC<CodeSectionProps> = ({ cell }) => {
-  const [code, setCode] = useState("");
-  const [err, setErr] = useState("");
-  const { updateCell } = useActions();
+  const { updateCell, createBundle } = useActions();
+  const bundle = useTypedSelector((state) => state.bundles[cell.id]);
 
   useEffect(() => {
+    if (!bundle) {
+      createBundle(cell.id, cell.content);
+      return;
+    }
     const timer = setTimeout(async () => {
-      const bundledCode = await bundle(cell.content);
-      setCode(bundledCode.code);
-      setErr(bundledCode.err);
+      createBundle(cell.id, cell.content);
     }, 750);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [cell.content]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cell.content, cell.id, createBundle]);
 
   return (
     <Resizable direction='vertical'>
@@ -37,7 +39,17 @@ const CodeSection: React.FC<CodeSectionProps> = ({ cell }) => {
             onChange={(val) => updateCell(cell.id, val)}
           />
         </Resizable>
-        <Preview code={code} error={err} />
+        <div className='progress-wrapper'>
+          {!bundle || bundle.loading ? (
+            <div className='progress-cover'>
+              <progress className='progress is-small is-primary'>
+                Loading
+              </progress>
+            </div>
+          ) : (
+            <Preview code={bundle.code} error={bundle.err} />
+          )}
+        </div>
       </div>
     </Resizable>
   );
