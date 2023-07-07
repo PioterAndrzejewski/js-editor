@@ -2,6 +2,7 @@ import produce from "immer";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 import { Cell } from "../cell";
+import { initialJS } from "../initialJS";
 
 interface CellsState {
   loading: boolean;
@@ -15,8 +16,19 @@ interface CellsState {
 const initialState: CellsState = {
   loading: false,
   error: null,
-  order: [],
-  data: {},
+  order: ["initial-code", "initial-MD"],
+  data: {
+    "initial-code": {
+      id: "initial-code",
+      type: "code",
+      content: initialJS,
+    },
+    "initial-MD": {
+      id: "initial-MD",
+      type: "text",
+      content: "# Click here to edit",
+    },
+  },
 };
 
 const reducer = produce((state: CellsState = initialState, action: Action) => {
