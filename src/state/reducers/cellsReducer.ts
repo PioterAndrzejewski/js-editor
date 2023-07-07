@@ -16,12 +16,22 @@ interface CellsState {
 const initialState: CellsState = {
   loading: false,
   error: null,
-  order: ["initial-code", "initial-MD"],
+  order: ["initial-code-0", "initial-code-1", "initial-code-2", "initial-MD"],
   data: {
-    "initial-code": {
-      id: "initial-code",
+    "initial-code-0": {
+      id: "initial-code-0",
       type: "code",
-      content: initialJS,
+      content: initialJS[0],
+    },
+    "initial-code-1": {
+      id: "initial-code-1",
+      type: "code",
+      content: initialJS[1],
+    },
+    "initial-code-2": {
+      id: "initial-code-2",
+      type: "code",
+      content: initialJS[2],
     },
     "initial-MD": {
       id: "initial-MD",

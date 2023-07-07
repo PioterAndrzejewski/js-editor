@@ -9,7 +9,7 @@ interface ResizableProps {
 const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth * 0.6);
 
   useEffect(() => {
     let timer: any;
@@ -44,7 +44,7 @@ const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
     };
   } else {
     resizableProps = {
-      height: 300,
+      height: 120,
       width: Infinity,
       resizeHandles: ["s"],
       maxConstraints: [Infinity, innerHeight * 0.9],
