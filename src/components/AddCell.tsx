@@ -6,11 +6,11 @@ interface AddCellProps {
 }
 
 const AddCell: React.FC<AddCellProps> = ({ id }) => {
-  const { insertCellBefore } = useActions();
+  const { insertCellAfter } = useActions();
   return (
     <div className='add-cell-wrapper'>
       <button
-        onClick={() => insertCellBefore(id, "text")}
+        onClick={() => insertCellAfter(id, "text")}
         className='button is-primary is-small'
       >
         <span className='icon'>
@@ -19,7 +19,7 @@ const AddCell: React.FC<AddCellProps> = ({ id }) => {
         <span className='text'>Add text editor</span>
       </button>
       <button
-        onClick={() => insertCellBefore(id, "code")}
+        onClick={() => insertCellAfter(id, "code")}
         className='button is-primary is-small'
       >
         <span className='icon'>

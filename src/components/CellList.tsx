@@ -11,15 +11,15 @@ const CellList: React.FC = () => {
 
   const renderedCells = orderedCells.map((cell) => (
     <Fragment key={cell.id}>
-      <AddCell id={cell.id} />
       <CellListItem cell={cell} />
+      <AddCell id={cell.id} />
     </Fragment>
   ));
 
   return (
     <div className='cell-list-wrapper'>
-      {renderedCells}
       <AddCell id={null} />
+      {renderedCells}
     </div>
   );
 };
