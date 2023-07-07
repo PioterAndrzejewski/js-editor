@@ -1,11 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import MDEditor from "@uiw/react-md-editor";
-import "./MD-editor.css";
+import { Cell } from "../state";
+import { useActions } from "../hooks/useActions";
+import "./text-editor.css";
 
-const Editor: React.FC = () => {
+interface TextEditorProps {
+  cell: Cell;
+}
+
+const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
   const [editMode, setEditMode] = useState(false);
-  const [markdown, setMarkdown] = useState("# Header");
   const editorRef = useRef<HTMLDivElement | null>(null);
+  const { updateCell } = useActions();
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -33,13 +39,15 @@ const Editor: React.FC = () => {
     >
       {editMode && (
         <MDEditor
-          value={markdown}
-          onChange={(newValue) => setMarkdown(newValue!)}
+          value={cell.content}
+          onChange={(newValue) => updateCell(cell.id, newValue || "")}
         />
       )}
-      {!editMode && <MDEditor.Markdown source={markdown} />}
+      {!editMode && (
+        <MDEditor.Markdown source={cell.content || "Click here to edit"} />
+      )}
     </div>
   );
 };
 
-export default Editor;
+export default TextEditor;

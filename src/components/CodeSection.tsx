@@ -3,31 +3,22 @@ import bundle from "../bundler";
 import Preview from "./Preview";
 import CodeEditor from "./CodeEditor";
 import Resizable from "./Resizable";
-import "bulmaswatch/slate/bulmaswatch.min.css";
+import { Cell } from "../state";
+import { useActions } from "../hooks/useActions";
 import "./code-section.css";
 
-const initValue = `import React from 'react';
-import { createRoot } from 'react-dom/client';
+interface CodeSectionProps {
+  cell: Cell;
+}
 
-const App = () => <h1>Hello world!</h1>;
-
-const root = createRoot(document.querySelector('#root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-console.log('happens');
-`;
-
-const CodeSection = () => {
+const CodeSection: React.FC<CodeSectionProps> = ({ cell }) => {
   const [code, setCode] = useState("");
   const [err, setErr] = useState("");
-  const [input, setInput] = useState(initValue);
+  const { updateCell } = useActions();
 
   useEffect(() => {
     const timer = setTimeout(async () => {
-      const bundledCode = await bundle(input);
+      const bundledCode = await bundle(cell.content);
       setCode(bundledCode.code);
       setErr(bundledCode.err);
     }, 750);
@@ -35,13 +26,16 @@ const CodeSection = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [input]);
+  }, [cell.content]);
 
   return (
     <Resizable direction='vertical'>
       <div className='code-section-wrapper'>
         <Resizable direction='horizontal'>
-          <CodeEditor initialValue={input} onChange={(val) => setInput(val)} />
+          <CodeEditor
+            initialValue={cell.content}
+            onChange={(val) => updateCell(cell.id, val)}
+          />
         </Resizable>
         <Preview code={code} error={err} />
       </div>

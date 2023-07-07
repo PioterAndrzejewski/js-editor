@@ -1,0 +1,12 @@
+.cell-wrapper {
+  position: relative;
+  margin: 20px 10px;
+  border: 2px solid #aaaaaa36;
+}
+
+.action-bar-wrapper {
+  position: relative;
+  height: 34px;
+  width: 100%;
+  background-color: #1d2730;
+}

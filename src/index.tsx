@@ -1,15 +1,18 @@
 import ReactDOM from "react-dom";
-import CodeSection from "./components/CodeSection";
-import Editor from "./components/MD-editor";
+import { Provider } from "react-redux";
+import { store } from "./state";
+import CellList from "./components/CellList";
 import "bulmaswatch/slate/bulmaswatch.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 
 const App = () => {
   return (
-    <div>
-      <Editor />
-      <CodeSection />
-    </div>
+    <Provider store={store}>
+      <div>
+        <CellList />
+      </div>
+    </Provider>
   );
 };
 

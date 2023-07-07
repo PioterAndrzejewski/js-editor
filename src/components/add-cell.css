@@ -1,0 +1,13 @@
+.add-cell-wrapper {
+  text-align: center;
+}
+
+.add-cell-wrapper .button {
+  margin: 0 20px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.add-cell-wrapper .button:hover {
+  opacity: 1;
+}
