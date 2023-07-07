@@ -1,20 +1,24 @@
-export const initialJS = `import React from 'react';
-import ReactDOM from 'react-dom';
-
-const App = () => {
+export const initialJS = [
+  `
+const HelloWorld = () => <h2>Hello world!</h2>
+show('editor has build-in show() function to preview something')`,
+  `
+  const App = () => {
   return (
     <div style={wrapperStyle}>
-      <h2>Hello world!</h2>
+      <HelloWorld />
     </div>
-  );
-};
+  )};
 
-const wrapperStyle = {
+  show(<HelloWorld />);
+
+  const wrapperStyle = {
   border: "1px solid black",
   borderRadius: "5px",
   padding: "10px",
   textAlign: "center",
   fontFamily: "Calibri, sans-serif"
-}
-
-ReactDOM.render(<App />, document.querySelector("#root"));`;
+}`,
+  `//every next code cell bundles code from all above
+show(<App />)`,
+];
