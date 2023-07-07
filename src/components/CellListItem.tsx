@@ -28,7 +28,11 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
     );
   }
 
-  return <div className='cell-wrapper'>{child}</div>;
+  return (
+    <>
+      <div className='cell-wrapper'>{child}</div>
+    </>
+  );
 };
 
 export default CellListItem;

@@ -1,4 +1,3 @@
-import { Cell } from "../state";
 import { useActions } from "../hooks/useActions";
 import "./action-bar.css";
 
