@@ -1,0 +1,2 @@
+(this["webpackJsonpjs-editor"]=this["webpackJsonpjs-editor"]||[]).push([[52],{228:function(e,t){Prism.languages.brainfuck={pointer:{pattern:/<|>/,alias:"keyword"},increment:{pattern:/\+/,alias:"inserted"},decrement:{pattern:/-/,alias:"deleted"},branching:{pattern:/\[|\]/,alias:"important"},operator:/[.,]/,comment:/\S+/}}}]);
+//# sourceMappingURL=52.94a51150.chunk.js.map

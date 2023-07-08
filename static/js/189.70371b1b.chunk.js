@@ -1,0 +1,2 @@
+(this["webpackJsonpjs-editor"]=this["webpackJsonpjs-editor"]||[]).push([[189],{365:function(a,e){Prism.languages.hsts={directive:{pattern:/\b(?:max-age=|includeSubDomains|preload)/,alias:"keyword"},safe:{pattern:/\b\d{8,}\b/,alias:"selector"},unsafe:{pattern:/\b\d{1,7}\b/,alias:"function"}}}}]);
+//# sourceMappingURL=189.70371b1b.chunk.js.map

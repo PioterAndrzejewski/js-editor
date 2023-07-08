@@ -1,2 +1,0 @@
-(this["webpackJsonpjs-editor"]=this["webpackJsonpjs-editor"]||[]).push([[448],{622:function(s,a){Prism.languages.t4=Prism.languages["t4-cs"]=Prism.languages["t4-templating"].createT4("csharp")}}]);
-//# sourceMappingURL=448.076c1823.chunk.js.map

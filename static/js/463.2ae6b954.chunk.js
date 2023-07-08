@@ -1,2 +1,0 @@
-(this["webpackJsonpjs-editor"]=this["webpackJsonpjs-editor"]||[]).push([[463],{637:function(t,e){!function(t){var e=t.util.clone(t.languages.typescript);t.languages.tsx=t.languages.extend("jsx",e);var s=t.languages.tsx.tag;s.pattern=RegExp("(^|[^\\w$]|(?=</))(?:"+s.pattern.source+")",s.pattern.flags),s.lookbehind=!0}(Prism)}}]);
-//# sourceMappingURL=463.2ae6b954.chunk.js.map
