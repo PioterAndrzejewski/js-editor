@@ -1,7 +1,7 @@
 export const initialJS = [
   `
 const HelloWorld = () => <h2>Hello world!</h2>
-show('editor has build-in show() function to preview something')`,
+show('editor has build-in show() function to preview something in this particular preview cell')`,
   `
   const App = () => {
   return (

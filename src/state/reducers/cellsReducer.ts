@@ -71,6 +71,11 @@ const reducer = produce(
         state.order[targetIndex] = action.payload.id;
         saveToLS(state);
         return state;
+      case ActionType.LOAD_CELLS:
+        if (action.payload) {
+          return action.payload;
+        }
+        return state;
       case ActionType.INSERT_CELL_AFTER:
         const cell: Cell = {
           content: "",

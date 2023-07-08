@@ -6,7 +6,6 @@ import {
   MoveCellAction,
   InsertCellAfterAction,
   LoadCellsAction,
-  SaveCellsToLSAction,
   Direction,
   Action,
 } from "../actions";
@@ -59,12 +58,6 @@ export const insertCellAfter = (
       id,
       type,
     },
-  };
-};
-
-export const saveCellsToLS = (): SaveCellsToLSAction => {
-  return {
-    type: ActionType.SAVE_TO_LS,
   };
 };
 

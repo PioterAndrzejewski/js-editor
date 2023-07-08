@@ -1,0 +1,28 @@
+.load-save-bar {
+  margin: 10px 10px 20px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.load-save-bar .button {
+  display: block;
+  flex-basis: 50%;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.load-save-bar .button:nth-child(1) {
+  border-right: 1px solid #272b30;
+}
+
+.load-save-bar .button:nth-child(2) {
+  border-left: 1px solid #272b30;
+}
+
+.load-save-bar .button:hover {
+  opacity: 1;
+}
+
+.input-file {
+  display: none;
+}

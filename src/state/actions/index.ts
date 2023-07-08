@@ -46,10 +46,6 @@ export interface LoadCellsAction {
   payload: CellsState;
 }
 
-export interface SaveCellsToLSAction {
-  type: ActionType.SAVE_TO_LS;
-}
-
 export interface BundleStartAction {
   type: ActionType.BUNDLE_START;
   payload: {
@@ -75,5 +71,4 @@ export type Action =
   | UpdateCellAction
   | BundleStartAction
   | BundleCompleteAction
-  | LoadCellsAction
-  | SaveCellsToLSAction;
+  | LoadCellsAction;
