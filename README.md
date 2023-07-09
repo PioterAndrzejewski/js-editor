@@ -30,8 +30,12 @@ Now you're ready to test the app in your browser on localhost:3000
 
 - Typescript
 - React
+- Redux
 - HTML
 - CSS
+- Immer
+- ESbuild
+- axios
 
 ## About The Project
 
