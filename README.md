@@ -1,7 +1,7 @@
 
 
 <!-- PROJECT LOGO -->
-![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/b304d312-feb2-44e4-9513-4ad9f43967ec)
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/4369db19-dc9b-4fa0-b54c-6f2206b77d23)
 
 
 <br />
