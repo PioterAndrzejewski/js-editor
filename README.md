@@ -39,6 +39,9 @@ Now you're ready to test the app in your browser on localhost:3000
 
 ## About The Project
 
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/229d8645-b265-46f0-929b-871d1e8cf590)
+
+
 The app consists of several elements:
 
 - [ ] action bar
