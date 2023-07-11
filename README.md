@@ -41,22 +41,34 @@ Now you're ready to test the app in your browser on localhost:3000
 
 The app consists of several elements:
 
-- [ ] MD-editor for documenting code
+- [ ] action bar
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/a8f94ae0-ab25-44d8-bc32-99ba6cd3bbec)
 
-![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/42718f58-64f9-441c-9558-f4c77273ab00)
-![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/0c7b0737-db09-40a5-ba1a-c0ab0d443124)
+Allows you to save current documentation status to JSON file and upload documentation from file. 
+However, with every change, your documentation is being saved to local storage to save it in case of closing the window. 
 
+- [ ] new-cell action bar
+
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/60a46120-c4e1-4fb7-b62b-4a0f3774b6b5)
+
+
+
+Allows to create new text or code editor
 
 
 - [ ] Code editor - for writing javascript code
 
-![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/8e5d96d4-06c2-4b63-b75d-ad7336400e6d)
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/d9afebd8-d5b3-4fd2-89cd-32a85c6dd9b9)
+
 
 
 - [ ] Preview window - for displaying exactly what is written in code editor. App also downloads dependencies, bundles and shows preview of the code.
 
-![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/9f58ebe1-b933-4f5f-b155-c621224b1f73)
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/64ca6ffe-0c14-4520-930a-4027deb251d9)
 
+
+Every next cell has bundled code from previous ones. 
+Every cell has its own show() function to preview component that you want.
 
  ## To-do
-To be continued....
+- keeping track of changes to allow for undo and redo
