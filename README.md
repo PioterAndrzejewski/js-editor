@@ -14,6 +14,15 @@ Interactive code editor and documenting tool
   </p>
 </div>
 
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/229d8645-b265-46f0-929b-871d1e8cf590)
+
+This is a web javascript editor.
+
+Allows you to write Javascript code, import dependencies, bundle and execute code live in browser.
+
+The app has also feature to document written code.
+
+
 ## Getting started
 
 After cloning the repository and installing dependencies run the app using npm start command. 
@@ -39,7 +48,6 @@ Now you're ready to test the app in your browser on localhost:3000
 
 ## About The Project
 
-![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/229d8645-b265-46f0-929b-871d1e8cf590)
 
 
 The app consists of several elements:
