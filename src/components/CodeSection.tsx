@@ -5,8 +5,8 @@ import Resizable from "./Resizable";
 import { Cell } from "../state";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import "./code-section.css";
 import { useCumulativeCode } from "../hooks/use-cumulative-code";
+import "./code-section.css";
 
 interface CodeSectionProps {
   cell: Cell;
