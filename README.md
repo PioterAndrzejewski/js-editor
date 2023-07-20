@@ -77,9 +77,16 @@ Allows to create new text or code editor
 
 ![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/64ca6ffe-0c14-4520-930a-4027deb251d9)
 
-
 Every next cell has bundled code from previous ones. 
 Every cell has its own show() function to preview component that you want.
+
+- [ ] Markup Editor - for editing text file 
+
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/e81d46ce-86ee-45dc-b3d9-737b40515316)
+
+![image](https://github.com/PioterAndrzejewski/js-editor/assets/109315248/acc39cb6-0b87-477f-af70-53e82dd3b06c)
+
+
 
  ## To-do
 - keeping track of changes to allow for undo and redo
