@@ -45,6 +45,7 @@ Now you're ready to test the app in your browser on localhost:3000
 - Immer
 - ESbuild
 - axios
+- JEST / React Testing Library / Redux-mock-store for testing
 
 ## About The Project
 
