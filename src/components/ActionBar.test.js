@@ -11,7 +11,7 @@ describe("ActionBar component", () => {
     store.dispatch = jest.fn();
   });
 
-  test('should call moveCell function with "up" when up button is clicked', () => {
+  test('should call correct dispatcher function with "up" when up button is clicked', () => {
     render(
       <Provider store={store}>
         <ActionBar id={5} />
@@ -29,7 +29,7 @@ describe("ActionBar component", () => {
     });
   });
 
-  test('should call moveCell function with "down" when down button is clicked', () => {
+  test('should call correct dispatcher function with "down" when down button is clicked', () => {
     render(
       <Provider store={store}>
         <ActionBar id={5} />
@@ -47,7 +47,7 @@ describe("ActionBar component", () => {
     });
   });
 
-  test("should call deleteCell function when delete button is clicked", () => {
+  test("should call correct dispatcher function when delete button is clicked", () => {
     render(
       <Provider store={store}>
         <ActionBar id={5} />
