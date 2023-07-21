@@ -14,7 +14,7 @@ export interface CellsState {
   };
 }
 
-const initialState: CellsState = {
+export const initialState: CellsState = {
   loading: false,
   error: null,
   order: ["initial-code-0", "initial-code-1", "initial-code-2", "initial-MD"],

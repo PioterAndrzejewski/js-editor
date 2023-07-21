@@ -36,6 +36,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
       }}
       ref={editorRef}
       className={editMode ? "text-editor" : "text-editor card-content"}
+      data-testid='text-section'
     >
       {editMode && (
         <MDEditor

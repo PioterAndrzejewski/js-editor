@@ -22,6 +22,8 @@ const CellList: React.FC = () => {
     order.map((id) => data[id]),
   );
 
+  // const orderedCells = useTypedSelector((data) => console.log(data));
+
   const renderedCells = orderedCells.map((cell) => (
     <Fragment key={cell.id}>
       <CellListItem cell={cell} />

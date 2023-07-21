@@ -46,7 +46,7 @@
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts test",
+    "test": "react-scripts test setupFile ./src/setupTests.js",
     "eject": "react-scripts eject",
     "deploy": "npm run build && gh-pages -d dist"
   },

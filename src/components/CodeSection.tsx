@@ -36,7 +36,7 @@ const CodeSection: React.FC<CodeSectionProps> = ({ cell }) => {
 
   return (
     <Resizable direction='vertical'>
-      <div className='code-section-wrapper'>
+      <div className='code-section-wrapper' data-testid="code-section">
         <Resizable direction='horizontal'>
           <CodeEditor
             initialValue={cell.content}

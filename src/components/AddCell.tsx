@@ -8,7 +8,7 @@ interface AddCellProps {
 const AddCell: React.FC<AddCellProps> = ({ id }) => {
   const { insertCellAfter } = useActions();
   return (
-    <div className='add-cell-wrapper'>
+    <div className='add-cell-wrapper' data-testid="add-cell">
       <button
         onClick={() => insertCellAfter(id, "text")}
         className='button is-primary is-small'
